@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sqlserver
+  name: prometheus
 spec:
   selector:
     matchLabels:
@@ -10,11 +10,11 @@ spec:
   template:
     metadata:
      labels:
-       app: sqlserver
+       app: prometheus
     spec:
       containers:
-      - name: sqlserver
-        image: docker pull mcr.microsoft.com/mssql/server:2017-CU19-ubuntu-16.04
+      - name: prometheus
+        image: docker pull prom/prometheus
         volumeMounts:
         - name: sqlserver-volume
           mountPath: /var/opt/mssql
